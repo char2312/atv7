@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulação de DOM e BOM</title>
+</head>
+<body>
+    <h1>Manipulação de DOM e BOM</h1>
+    <p>Este é um parágrafo existente na página.</p>
+    <img src="https://via.placeholder.com/150" alt="Imagem de exemplo">
+    
+    <script>
+        // Passo 2: Exibir um alerta e uma mensagem no console
+        alert("Bem-vindo ao Console!");
+        console.log("Mensagem exibida no console.");
+
+        // Passo 3: Exibir as dimensões da janela do navegador
+        console.log("Largura da janela: " + window.innerWidth + "px");
+        console.log("Altura da janela: " + window.innerHeight + "px");
+
+        // Passo 4: Manipular o Local Storage
+        localStorage.setItem("minhaChave", "Meu Valor");
+        console.log("Valor armazenado: " + localStorage.getItem("minhaChave"));
+
+        // Passo 5: Criar um elemento div com id de meuDiv e inseri-lo no body
+        let novoDiv = document.createElement("div");
+        novoDiv.id = "meuDiv";
+        document.body.appendChild(novoDiv);
+
+        // Passo 6: Adicionar texto e estilizar o div
+        novoDiv.textContent = "Este é o meu div criado dinamicamente!";
+        novoDiv.style.color = "white";
+        novoDiv.style.backgroundColor = "blue";
+        novoDiv.style.padding = "10px";
+        novoDiv.style.marginTop = "10px";
+
+        // Passo 7: Alterar o conteúdo e o fundo de um parágrafo existente
+        let paragrafo = document.querySelector("p");
+        if (paragrafo) {
+            paragrafo.textContent = "Texto modificado dinamicamente!";
+            paragrafo.style.backgroundColor = "yellow";
+        }
+
+        // Passo 8: Adicionar um atributo title a uma imagem existente
+        let imagem = document.querySelector("img");
+        if (imagem) {
+            imagem.setAttribute("title", "Imagem dinâmica");
+        }
+
+        // Passo 9: Criar um botão que altera o conteúdo do div criado anteriormente
+        let botao = document.createElement("button");
+        botao.textContent = "Clique para alterar o div";
+        document.body.appendChild(botao);
+
+        botao.addEventListener("click", function() {
+            novoDiv.textContent = "O conteúdo do div foi alterado!";
+        });
+
+        // Passo 10: Capturar um evento de teclado e exibir mensagem ao pressionar "Enter"
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                console.log("A tecla Enter foi pressionada!");
+            }
+        });
+
+        // Passo 11: Criar uma lista dinâmica
+        let lista = document.createElement("ul");
+        document.body.appendChild(lista);
+
+        function adicionarItem(conteudo) {
+            let item = document.createElement("li");
+            item.textContent = conteudo + " ";
+            
+            let botaoRemover = document.createElement("button");
+            botaoRemover.textContent = "Remover";
+            botaoRemover.addEventListener("click", function() {
+                lista.removeChild(item);
+            });
+
+            item.appendChild(botaoRemover);
+            lista.appendChild(item);
+        }
+
+        // Adicionando alguns itens iniciais à lista
+        adicionarItem("Item 1");
+        adicionarItem("Item 2");
+        adicionarItem("Item 3");
+    </script>
+</body>
+</html>
